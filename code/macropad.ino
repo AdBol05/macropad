@@ -21,11 +21,11 @@ unsigned int mode = 0;
 unsigned int prevmode = 0;
 bool modeSW = false;
 String lock = "locked";
-String mode_str = "MEDIA";
+String mode_str = "MEDI";
 
 void displayUpdate(){
   u8x8.clear();
-  u8x8.setCursor(5,0);
+  u8x8.setCursor(6,0);
   u8x8.print(mode_str);
   u8x8.setCursor(5,1);
   u8x8.print(lock);
@@ -51,12 +51,11 @@ void setup() {
  lastStateCLK = digitalRead(CLK);
  displayUpdate();
  Keyboard.begin();
+ digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void loop() {
   //rotary encoder input handling
-  digitalWrite(LED_BUILTIN, HIGH);
-
   if (digitalRead(CLK) != lastStateCLK  && digitalRead(CLK) == 1){
     if (digitalRead(DT) == digitalRead(CLK)) {
       if (modeSW == true) {mode --;}
@@ -76,10 +75,10 @@ void loop() {
       }
 switch (mode){
   case 0:
-    mode_str = "MEDIA";
+    mode_str = "MEDI";
     break;
   case 1:
-    mode_str = "PROGR";
+    mode_str = "PROG";
     break;
 } 
     if (modeSW == true) {displayUpdate();}
@@ -101,10 +100,11 @@ switch (mode){
     displayUpdate();
   }
 
-if(Key1 == LOW){
+if(digitalRead(Key1) == LOW){
+    digitalWrite(LED_BUILTIN, LOW);
   switch (mode){
     case 0:
-      Keyboard.press(KEY_LEFT_CTRL);
+      Keyboard.press(KEY_F5);
       delay(200);
       Keyboard.releaseAll();
       break;
@@ -115,7 +115,7 @@ if(Key1 == LOW){
       break;
   }
 }
-if(Key2 == LOW){
+if(digitalRead(Key2) == LOW){
   switch (mode){
     case 0:
       Keyboard.press(KEY_LEFT_ALT);
@@ -129,7 +129,7 @@ if(Key2 == LOW){
       break;
   }
 }
-if(Key3 == LOW){
+if(digitalRead(Key3) == LOW){
   switch (mode){
     case 0:
       Keyboard.press(KEY_RIGHT_CTRL);
@@ -143,7 +143,7 @@ if(Key3 == LOW){
       break;
   }
 }
-if(Key4 == LOW){
+if(digitalRead(Key4) == LOW){
   switch (mode){
     case 0:
       Keyboard.press(KEY_RIGHT_ALT);
@@ -157,7 +157,7 @@ if(Key4 == LOW){
       break;
   }
 }
-if(Key5 == LOW){
+if(digitalRead(Key5) == LOW){
   switch (mode){
     case 0:
 
