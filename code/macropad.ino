@@ -21,16 +21,29 @@ unsigned int mode = 0;
 unsigned int prevmode = 0;
 bool modeSW = false;
 String lock = "locked";
-String mode_str = "MEDI";
+String mode_str = "GNRL";
+String K1 = "E";
+String K2 = "T";
+String K3 = "V";
+String K4 = "S";
+String K5 = "#";
 
 void displayUpdate(){
   u8x8.clear();
   u8x8.setCursor(6,0);
   u8x8.print(mode_str);
+  u8x8.setCursor(1,6);
+  u8x8.print(K1);
+  u8x8.setCursor(4,6);
+  u8x8.print(K2);
+  u8x8.setCursor(7,6);
+  u8x8.print(K3);
+  u8x8.setCursor(10,6);
+  u8x8.print(K4);
+  u8x8.setCursor(13,6);
+  u8x8.print(K5);
   u8x8.setCursor(5,1);
   u8x8.print(lock);
-  //u8x8.setCursor(2,3);
-  //u8x8.print(mode);
 }
 
 void setup() {
@@ -46,12 +59,9 @@ void setup() {
  u8x8.setFont(u8x8_font_chroma48medium8_r);
  u8x8.noInverse();
  u8x8.clear();
- pinMode(LED_BUILTIN, OUTPUT);
- digitalWrite(LED_BUILTIN, HIGH);
  lastStateCLK = digitalRead(CLK);
  displayUpdate();
  Keyboard.begin();
- digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void loop() {
@@ -60,25 +70,43 @@ void loop() {
     if (digitalRead(DT) == digitalRead(CLK)) {
       if (modeSW == true) {mode --;}
       else {
-        Keyboard.press(KEY_F5);
-        delay(200);
+        Keyboard.press(KEY_DOWN_ARROW);
+        delay(100);
         Keyboard.releaseAll();
         }
       } 
     if (digitalRead(DT) != digitalRead(CLK)) {
       if (modeSW == true) {mode ++;}
       else {
-        Keyboard.press(KEY_F5);
-        delay(200);
+        Keyboard.press(KEY_UP_ARROW);
+        delay(100);
         Keyboard.releaseAll();
         }
       }
-switch (mode){
+switch (mode){ //display modes
   case 0:
-    mode_str = "MEDI";
+    mode_str = "GNRL";
+    K1 = "E";
+    K2 = "T";
+    K3 = "V";
+    K4 = "S";
+    K5 = "#";
     break;
   case 1:
     mode_str = "PROG";
+    K1 = "S";
+    K2 = "R";
+    K3 = "U";
+    K4 = "X";
+    K5 = "K";
+    break;
+  case 2:
+    mode_str = "DISC";
+    K1 = "M";
+    K2 = "H";
+    K3 = "R";
+    K4 = "B";
+    K5 = "#";
     break;
 } 
     if (modeSW == true) {displayUpdate();}
@@ -100,84 +128,147 @@ switch (mode){
     displayUpdate();
   }
 
-if(digitalRead(Key1) == LOW){
+if(digitalRead(Key1) == LOW){ //KEY #1 macros
     digitalWrite(LED_BUILTIN, LOW);
   switch (mode){
     case 0:
-      Keyboard.press(KEY_F5);
-      delay(200);
-      Keyboard.releaseAll();
-      break;
-    case 1:
-      Keyboard.press(KEY_LEFT_SHIFT);
-      delay(200);
-      Keyboard.releaseAll();
-      break;
-  }
-}
-if(digitalRead(Key2) == LOW){
-  switch (mode){
-    case 0:
-      Keyboard.press(KEY_LEFT_ALT);
-      delay(200);
-      Keyboard.releaseAll();
-      break;
-    case 1:
       Keyboard.press(KEY_LEFT_GUI);
+      delay(10);
+      Keyboard.press('e');
+      delay(200);
+      Keyboard.releaseAll();
+      break; 
+    case 1:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('s');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+    case 2:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press(KEY_LEFT_SHIFT);
+      delay(10);
+      Keyboard.press('m');
       delay(200);
       Keyboard.releaseAll();
       break;
   }
 }
-if(digitalRead(Key3) == LOW){
+if(digitalRead(Key2) == LOW){ //KEY #2 macros
   switch (mode){
     case 0:
-      Keyboard.press(KEY_RIGHT_CTRL);
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press(KEY_LEFT_SHIFT);
+      delay(10); 
+      Keyboard.press(KEY_ESC);
       delay(200);
       Keyboard.releaseAll();
       break;
     case 1:
-      Keyboard.press(KEY_RIGHT_SHIFT);
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('r');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+    case 2:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press(KEY_LEFT_SHIFT);
+      delay(10);
+      Keyboard.press('d');
       delay(200);
       Keyboard.releaseAll();
       break;
   }
 }
-if(digitalRead(Key4) == LOW){
+if(digitalRead(Key3) == LOW){ //KEY #3 macros
   switch (mode){
     case 0:
-      Keyboard.press(KEY_RIGHT_ALT);
+      Keyboard.press(KEY_LEFT_GUI);
+      delay(10);
+      Keyboard.press('v');
+      delay(200);
+      break;
+    case 1:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('u');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+    case 2:
+      Keyboard.press(KEY_LEFT_SHIFT);
+      delay(10);
+      Keyboard.press(KEY_ESC);
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+  }
+}
+if(digitalRead(Key4) == LOW){ //KEY #4 macros
+  switch (mode){
+    case 0:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('s');
       delay(200);
       Keyboard.releaseAll();
       break;
     case 1:
-      Keyboard.press(KEY_RIGHT_GUI);
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('x');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+    case 2:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('b');
       delay(200);
       Keyboard.releaseAll();
       break;
   }
 }
-if(digitalRead(Key5) == LOW){
+if(digitalRead(Key5) == LOW){ //KEY #5 macros
   switch (mode){
     case 0:
+      Keyboard.press(KEY_LEFT_GUI);
+      delay(10);
+      Keyboard.press(KEY_LEFT_SHIFT);
+      delay(10);
+      Keyboard.press('s');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+    case 1:
+      Keyboard.press(KEY_LEFT_CTRL);
+      delay(10);
+      Keyboard.press('k');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+    case 2:
+      Keyboard.press(KEY_LEFT_GUI);
+      delay(10);
+      Keyboard.press(KEY_LEFT_SHIFT);
+      delay(10);
+      Keyboard.press('s');
+      delay(200);
+      Keyboard.releaseAll();
+      break;
+  }
+}
 
-      Keyboard.press(KEY_UP_ARROW);
-      delay(200);
-      Keyboard.releaseAll();
-      break;
-    case 1:
-      Keyboard.press(KEY_DOWN_ARROW);
-      delay(200);
-      Keyboard.releaseAll();
-      break;
-  }
-}
-
-  if(prevmode != mode){
+  if(prevmode != mode){ //update display when mode changes
     displayUpdate();
     prevmode = mode;
   }
 
-  if(mode >= 2) {mode = 0;}
+  if(mode >= 3) {mode = 0;} //modes limiter
 delay(1);
 }
