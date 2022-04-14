@@ -192,6 +192,7 @@ if(digitalRead(Key3) == LOW){ //KEY #3 macros
       delay(10);
       Keyboard.press('v');
       delay(200);
+      Keyboard.releaseAll();
       break;
     case 1:
       Keyboard.press(KEY_LEFT_CTRL);
