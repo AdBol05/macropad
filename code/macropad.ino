@@ -14,6 +14,22 @@ U8X8_SSD1306_128X64_NONAME_HW_I2C u8x8(/* reset=*/ U8X8_PIN_NONE);
 #define Key4 19
 #define Key5 20
 
+#define n1 2
+#define n2 3
+#define n3 13
+#define n4 14
+#define n5 15
+#define n6 21
+#define n7 22
+#define n8 26
+#define n9 27
+#define n0 28
+
+#define enter 9
+#define plus 10
+#define minus 11
+#define comma 12
+
 int currentStateCLK;
 int lastStateCLK;
 unsigned long lastButtonPress = 0;
@@ -264,6 +280,22 @@ if(digitalRead(Key5) == LOW){ //KEY #5 macros
       break;
   }
 }
+
+//Numpad
+if(digitalRead(n1) == LOW){Keyboard.press(KEY_KP_1);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n2) == LOW){Keyboard.press(KEY_KP_2);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n3) == LOW){Keyboard.press(KEY_KP_3);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n4) == LOW){Keyboard.press(KEY_KP_4);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n5) == LOW){Keyboard.press(KEY_KP_5);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n6) == LOW){Keyboard.press(KEY_KP_6);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n7) == LOW){Keyboard.press(KEY_KP_7);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n8) == LOW){Keyboard.press(KEY_KP_8);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n9) == LOW){Keyboard.press(KEY_KP_9);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n0) == LOW){Keyboard.press(KEY_KP_0);delay(50);Keyboard.releaseAll();}
+if(digitalRead(enter == LOW){Keyboard.press(KEY_KP_ENTER);delay(50);Keyboard.releaseAll();}
+if(digitalRead(plus) == LOW){Keyboard.press(KEY_KP_PLUS);delay(50);Keyboard.releaseAll();}
+if(digitalRead(minus) == LOW){Keyboard.press(KEY_KP_MINUS);delay(50);Keyboard.releaseAll();}
+if(digitalRead(comma) == LOW){Keyboard.press(KEY_KP_DOT);delay(50);Keyboard.releaseAll();}
 
   if(prevmode != mode){ //update display when mode changes
     displayUpdate();
