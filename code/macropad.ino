@@ -71,6 +71,22 @@ void setup() {
  pinMode(Key3, INPUT_PULLUP);
  pinMode(Key4, INPUT_PULLUP);
  pinMode(Key5, INPUT_PULLUP);
+
+ pinMode(n1, INPUT_PULLUP);
+ pinMode(n2, INPUT_PULLUP);
+ pinMode(n3, INPUT_PULLUP);
+ pinMode(n4, INPUT_PULLUP);
+ pinMode(n5, INPUT_PULLUP);
+ pinMode(n6, INPUT_PULLUP);
+ pinMode(n7, INPUT_PULLUP);
+ pinMode(n8, INPUT_PULLUP);
+ pinMode(n9, INPUT_PULLUP);
+ pinMode(n0, INPUT_PULLUP);
+ pinMode(enter, INPUT_PULLUP);
+ pinMode(plus, INPUT_PULLUP);
+ pinMode(minus, INPUT_PULLUP);
+ pinMode(comma, INPUT_PULLUP);
+
  u8x8.begin();
  u8x8.setFont(u8x8_font_chroma48medium8_r);
  u8x8.noInverse();
@@ -292,7 +308,7 @@ if(digitalRead(n7) == LOW){Keyboard.press(KEY_KP_7);delay(50);Keyboard.releaseAl
 if(digitalRead(n8) == LOW){Keyboard.press(KEY_KP_8);delay(50);Keyboard.releaseAll();}
 if(digitalRead(n9) == LOW){Keyboard.press(KEY_KP_9);delay(50);Keyboard.releaseAll();}
 if(digitalRead(n0) == LOW){Keyboard.press(KEY_KP_0);delay(50);Keyboard.releaseAll();}
-if(digitalRead(enter == LOW){Keyboard.press(KEY_KP_ENTER);delay(50);Keyboard.releaseAll();}
+if(digitalRead(enter) == LOW){Keyboard.press(KEY_KP_ENTER);delay(50);Keyboard.releaseAll();}
 if(digitalRead(plus) == LOW){Keyboard.press(KEY_KP_PLUS);delay(50);Keyboard.releaseAll();}
 if(digitalRead(minus) == LOW){Keyboard.press(KEY_KP_MINUS);delay(50);Keyboard.releaseAll();}
 if(digitalRead(comma) == LOW){Keyboard.press(KEY_KP_DOT);delay(50);Keyboard.releaseAll();}
