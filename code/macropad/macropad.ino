@@ -298,20 +298,20 @@ if(digitalRead(Key5) == LOW){ //KEY #5 macros
 }
 
 //Numpad
-if(digitalRead(n1) == LOW){Keyboard.press(KEY_KP_1);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n2) == LOW){Keyboard.press(KEY_KP_2);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n3) == LOW){Keyboard.press(KEY_KP_3);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n4) == LOW){Keyboard.press(KEY_KP_4);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n5) == LOW){Keyboard.press(KEY_KP_5);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n6) == LOW){Keyboard.press(KEY_KP_6);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n7) == LOW){Keyboard.press(KEY_KP_7);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n8) == LOW){Keyboard.press(KEY_KP_8);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n9) == LOW){Keyboard.press(KEY_KP_9);delay(50);Keyboard.releaseAll();}
-if(digitalRead(n0) == LOW){Keyboard.press(KEY_KP_0);delay(50);Keyboard.releaseAll();}
-if(digitalRead(enter) == LOW){Keyboard.press(KEY_KP_ENTER);delay(50);Keyboard.releaseAll();}
-if(digitalRead(plus) == LOW){Keyboard.press(KEY_KP_PLUS);delay(50);Keyboard.releaseAll();}
-if(digitalRead(minus) == LOW){Keyboard.press(KEY_KP_MINUS);delay(50);Keyboard.releaseAll();}
-if(digitalRead(comma) == LOW){Keyboard.press(KEY_KP_DOT);delay(50);Keyboard.releaseAll();}
+if(digitalRead(n1) == LOW){Keyboard.press(KEY_KP_1);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n2) == LOW){Keyboard.press(KEY_KP_2);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n3) == LOW){Keyboard.press(KEY_KP_3);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n4) == LOW){Keyboard.press(KEY_KP_4);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n5) == LOW){Keyboard.press(KEY_KP_5);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n6) == LOW){Keyboard.press(KEY_KP_6);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n7) == LOW){Keyboard.press(KEY_KP_7);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n8) == LOW){Keyboard.press(KEY_KP_8);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n9) == LOW){Keyboard.press(KEY_KP_9);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(n0) == LOW){Keyboard.press(KEY_KP_0);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(enter) == LOW){Keyboard.press(KEY_KP_ENTER);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(plus) == LOW){Keyboard.press(KEY_KP_PLUS);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(minus) == LOW){Keyboard.press(KEY_KP_MINUS);delay(50);Keyboard.releaseAll();delay(100);}
+if(digitalRead(comma) == LOW){Keyboard.press(KEY_KP_DOT);delay(50);Keyboard.releaseAll();delay(100);}
 
   if(prevmode != mode){ //update display when mode changes
     displayUpdate();
